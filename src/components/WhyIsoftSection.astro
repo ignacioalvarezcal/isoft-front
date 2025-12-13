@@ -1,0 +1,47 @@
+---
+import type { Pillar } from "../data/isoft";
+
+interface Props {
+  pillars: Pillar[];
+}
+
+const { pillars } = Astro.props as Props;
+---
+
+<section class="section pillars-section" id="por-que-isoft">
+  <div class="section-inner">
+    <div
+      id="why-title"
+      data-animate
+      class="section-title fade-in-up"
+    >
+      <div class="section-title__label">Excelencia</div>
+      <h2 class="section-title__heading">
+        Por Qué <span class="text-gradient">Isoft</span>
+      </h2>
+    </div>
+
+    <div class="grid grid--pillars">
+      {pillars.map((pillar, index) => (
+        <div
+          id={`pillar-${index}`}
+          data-animate
+          class="fade-in-up"
+          style={`transition-delay: ${index * 100}ms`}
+        >
+          <div class="pillar-card">
+            <div class="pillar-card-number text-gradient">
+              {pillar.number}
+            </div>
+            <h3 class="pillar-card-label">
+              {pillar.label}
+            </h3>
+            <p class="pillar-card-text">
+              {pillar.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

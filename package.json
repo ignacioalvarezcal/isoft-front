@@ -1,0 +1,19 @@
+{
+  "name": "frontend",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.15.7",
+    "lucide-astro": "^0.553.0",
+    "openai": "^6.9.0"
+  },
+  "devDependencies": {
+    "sass": "^1.94.0"
+  }
+}

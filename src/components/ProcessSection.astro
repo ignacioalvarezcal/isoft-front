@@ -1,0 +1,45 @@
+---
+import type { ProcessStep } from "../data/isoft";
+
+interface Props {
+  steps: ProcessStep[];
+}
+
+const { steps } = Astro.props as Props;
+---
+
+<section class="section process-section" id="proceso">
+  <div class="section-inner">
+    <div
+      id="process-title"
+      data-animate
+      class="section-title fade-in-up"
+    >
+      <div class="section-title__label">Metodología</div>
+      <h2 class="section-title__heading">
+        Nuestro <span class="text-gradient">Proceso</span>
+      </h2>
+    </div>
+
+    <div class="grid grid--process">
+      {steps.map((step, index) => (
+        <article
+          id={`process-${index}`}
+          data-animate
+          class="fade-in-up process-card"
+          style={`transition-delay: ${index * 100}ms`}
+        >
+          <div class="process-step-number text-gradient">
+            {step.step}
+          </div>
+          <h3 class="process-step-title">
+            {step.title}
+          </h3>
+          <p class="process-step-text">
+            {step.desc}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

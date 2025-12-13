@@ -1,0 +1,62 @@
+---
+import "../styles/global.scss";
+import NavBar from "../components/NavBar.astro";
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Isoft - Consultoría Tecnológica de Élite",
+  description = "Consultoría tecnológica de élite especializada en transformación digital empresarial, software a medida, inteligencia artificial, ETL y dashboards.",
+} = Astro.props as Props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+
+  <body class="page">
+    <slot />
+
+    <!-- JS para parallax + animaciones -->
+    <script>
+      // Parallax blobs
+      const parallaxEls = document.querySelectorAll("[data-parallax]");
+
+      const handleScroll = () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+
+        parallaxEls.forEach((el) => {
+          const htmlEl = el as HTMLElement;
+          const speed = Number(htmlEl.getAttribute("data-speed") || "0.3");
+          htmlEl.style.transform = `translateY(${scrollY * speed * 0.5}px)`;
+        });
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
+
+      // IntersectionObserver para .fade-in-up
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              (entry.target as HTMLElement).classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "50px" }
+      );
+
+      document
+        .querySelectorAll("[data-animate]")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

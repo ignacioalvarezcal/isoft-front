@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import ServicesSection from "../components/ServicesSection.astro";
+import WhyIsoftSection from "../components/WhyIsoftSection.astro";
+import ProcessSection from "../components/ProcessSection.astro";
+import CTASection from "../components/CTASection.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import ChatWidget from '../components/ChatWidget.astro';
+import NavBar from '../components/NavBar.astro';
+
+import { services, pillars, processSteps } from "../data/isoft";
+---
+
+<BaseLayout>
+	<NavBar />
+  <ChatWidget />
+  <Hero />
+  <ServicesSection services={services} />
+  <WhyIsoftSection pillars={pillars} />
+  <ProcessSection steps={processSteps} />
+  <CTASection />
+  <SiteFooter />
+</BaseLayout>

@@ -1,0 +1,69 @@
+---
+import type { Service } from "../data/isoft";
+import { Cpu, Zap, Brain, Shield, Database, BarChart3 } from "lucide-astro";
+
+interface Props {
+  services: Service[];
+}
+
+const { services } = Astro.props as Props;
+
+const getServiceIcon = (type: Service["icon"]) => {
+  switch (type) {
+    case "cpu":
+      return Cpu;
+    case "zap":
+      return Zap;
+    case "brain":
+      return Brain;
+    case "shield":
+      return Shield;
+    case "db":
+      return Database;
+    case "chart":
+      return BarChart3;
+  }
+};
+---
+
+<section class="section services-section" id="servicios">
+  <div class="section-inner">
+    <div
+      id="services-title"
+      data-animate
+      class="section-title fade-in-up"
+    >
+      <div class="section-title__label">Servicios</div>
+      <h2 class="section-title__heading">
+        Soluciones <span class="text-gradient">Integrales</span>
+      </h2>
+      <p class="section-title__subtitle">
+        Tecnología de vanguardia diseñada para impulsar el crecimiento empresarial
+      </p>
+    </div>
+
+    <div class="grid grid--services">
+      {services.map((service, index) => {
+        const Icon = getServiceIcon(service.icon);
+        return (
+          <article
+            id={`service-${index}`}
+            data-animate
+            class="service-card fade-in-up"
+            style={`transition-delay: ${index * 100}ms`}
+          >
+            <div class="services-card-icon-wrapper">
+              <Icon />
+            </div>
+            <h3 class="services-card-title">
+              {service.title}
+            </h3>
+            <p class="services-card-text">
+              {service.description}
+            </p>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>

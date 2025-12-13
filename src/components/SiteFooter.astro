@@ -1,0 +1,71 @@
+---
+import { Mail, Phone, MapPin, ArrowRight } from "lucide-astro";
+---
+
+<footer class="footer">
+  <div class="footer__inner">
+
+    <!-- GRID PRINCIPAL -->
+    <div class="footer__grid">
+
+      <!-- Columna Izquierda (Brand) -->
+      <div class="footer__brand">
+        <h3 class="footer__brand-title text-gradient">Isoft</h3>
+
+        <p class="footer__brand-text">
+          Consultoría tecnológica de élite especializada en transformación digital
+          empresarial con soluciones modernas, escalables y de alto rendimiento.
+        </p>
+
+        <div class="footer__social">
+          <div class="footer__icon-btn">
+            <Mail class="footer__icon" />
+          </div>
+          <div class="footer__icon-btn">
+            <Phone class="footer__icon" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Servicios -->
+      <div class="footer__col">
+        <h4 class="footer__col-title">Servicios</h4>
+        <ul class="footer__link-list">
+          <li class="footer__link-item">Software a Medida</li>
+          <li class="footer__link-item">Integración de Sistemas</li>
+          <li class="footer__link-item">Inteligencia Artificial</li>
+          <li class="footer__link-item">Auditorías Tecnológicas</li>
+        </ul>
+      </div>
+
+      <!-- Columna Información de contacto -->
+      <div class="footer__col">
+        <h4 class="footer__col-title">Contacto</h4>
+        <ul class="footer__link-list">
+
+          <li class="footer__contact-item">
+            <Mail class="footer__icon-sm" />
+            <span>contacto@isoft.com</span>
+          </li>
+
+          <li class="footer__contact-item">
+            <Phone class="footer__icon-sm" />
+            <span>+56 2 2345 6789</span>
+          </li>
+
+          <li class="footer__contact-item">
+            <MapPin class="footer__icon-sm" />
+            <span>Santiago, Chile</span>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Línea inferior -->
+    <div class="footer__bottom">
+      <p>&copy; 2025 Isoft. Todos los derechos reservados. | Consultoría Tecnológica de Élite</p>
+    </div>
+  </div>
+</footer>

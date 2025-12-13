@@ -1,0 +1,353 @@
+---
+const widgetId = 'ai-chat-widget';
+---
+
+<div id={widgetId}>
+  <!-- Botón flotante con tu animación 3D -->
+  <button class="chat-launcher" aria-label="Abrir chat de ayuda">
+    <div class="chat-avatar-3d">
+      <!-- Aquí luego metes tu canvas / animación 3D -->
+      <span>💬</span>
+    </div>
+  </button>
+
+  <!-- Panel de chat -->
+  <div class="chat-panel">
+    <header class="chat-header">
+      <div>
+        <strong>ISOBOT</strong>
+        <p>Asistente virtual de ISOFT trabajando 24/7 para tí</p>
+      </div>
+      <button class="chat-close" aria-label="Cerrar chat">✕</button>
+    </header>
+
+    <div class="chat-messages"></div>
+
+    <form class="chat-input-area">
+      <textarea
+        class="chat-textarea"
+        placeholder="Escribe tu pregunta..."
+        rows="3" 
+        ></textarea>
+      <button type="submit" class="chat-send">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<style>
+  #ai-chat-widget {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .chat-launcher {
+    width: 72px;
+    height: 72px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    background: radial-gradient(circle at 30% 30%, #76b5ff, #0a4b78);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .chat-launcher:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .chat-avatar-3d {
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .chat-avatar-3d span {
+    font-size: 1.8rem;
+  }
+
+  .chat-panel {
+    position: absolute;
+    bottom: 100px;          /* un poquito más arriba */
+    right: 0;
+    width: min(430px, 95vw);  /* antes 360px -> ahora más ancho */
+    max-height: 78vh;         /* antes 70vh -> más alto */
+    border-radius: 18px;
+    background: #0b1724;
+    color: #f9fafb;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition:
+        opacity 0.16s ease,
+        transform 0.16s ease;
+    }
+
+  .chat-panel.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .chat-header {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: radial-gradient(circle at top left, #0ea5e9 0, #020617 45%);
+  }
+
+  .chat-header strong {
+    font-size: 0.95rem;
+  }
+
+  .chat-header p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #cbd5f5;
+  }
+
+  .chat-close {
+    background: none;
+    border: none;
+    color: #e5e7eb;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .chat-messages {
+    padding: 1.1rem 1.1rem;  /* antes 0.8 / 0.9 */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;            /* antes 0.5 */
+  }
+
+  .chat-message {
+    max-width: 95%;
+    padding: 0.7rem 0.9rem;  /* burbuja un poco más grande */
+    border-radius: 14px;
+    font-size: 0.9rem;       /* un poquito más grande */
+    line-height: 1.5;        /* más aire entre líneas */
+    white-space: pre-wrap;
+  }
+
+  .chat-message.user {
+    margin-left: auto;
+    background: #1d4ed8;
+  }
+
+  .chat-message.assistant {
+    margin-right: auto;
+    background: #020617;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+  }
+
+  .chat-message.system {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #9ca3af;
+  }
+
+  .chat-input-area {
+    border-top: 1px solid rgba(148, 163, 184, 0.3);
+    padding: 0.8rem 0.9rem;   /* antes 0.6 / 0.7 */
+    display: flex;
+    gap: 0.75rem;             /* antes 0.5 */
+  }
+
+  .chat-textarea {
+    flex: 1;
+    resize: none;
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    padding: 0.55rem 0.7rem;
+    font-size: 0.85rem;
+    background: #020617;
+    color: #f9fafb;
+    }
+
+  .chat-textarea:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.4);
+  }
+
+  .chat-send {
+    border-radius: 999px;
+    border: none;
+    padding: 0 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    color: #f9fafb;
+    white-space: nowrap;
+  }
+
+  .chat-send:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  .chat-action-button {
+    margin-top: 0.3rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    border: none;
+    cursor: pointer;
+    background: #facc15;
+    color: #1f2937;
+  }
+</style>
+
+<script lang="ts">
+// @ts-nocheck  <- desactiva TypeScript SOLO en este archivo
+
+(function () {
+  const root = document.getElementById('ai-chat-widget');
+  if (!root) return;
+
+  const launcher = root.querySelector('.chat-launcher');
+  const panel = root.querySelector('.chat-panel');
+  const closeBtn = root.querySelector('.chat-close');
+  const messagesContainer = root.querySelector('.chat-messages');
+  const form = root.querySelector('.chat-input-area');
+  const textarea = root.querySelector('.chat-textarea');
+  const sendBtn = root.querySelector('.chat-send');
+
+  // Si falta algo, no seguimos
+  if (!launcher || !panel || !closeBtn || !messagesContainer || !form || !textarea || !sendBtn) {
+    console.warn('Chat widget: faltan elementos en el DOM');
+    return;
+  }
+
+  // Historial simple en memoria (solo pestaña actual)
+  let history = [];
+
+  function addMessage(role, content) {
+    const div = document.createElement('div');
+    div.classList.add('chat-message', role);
+    div.textContent = content;
+    messagesContainer.appendChild(div);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function addSystemMessage(content) {
+    const div = document.createElement('div');
+    div.classList.add('chat-message', 'system');
+    div.textContent = content;
+    messagesContainer.appendChild(div);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  async function sendMessage(text) {
+    if (!text.trim()) return;
+
+    // Añadir mensaje del usuario
+    addMessage('user', text);
+    history.push({ role: 'user', content: text });
+
+    textarea.value = '';
+    textarea.disabled = true;
+    sendBtn.disabled = true;
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          history: history,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error('Error en la respuesta del servidor');
+      }
+
+      const data = await res.json();
+      let reply = data.reply || '';
+
+      // Detectar posible AGENDAR:
+      let scheduleUrl = null;
+      const lines = reply.split('\n');
+      const lastLine = (lines[lines.length - 1] || '').trim();
+      if (lastLine.startsWith('AGENDAR:')) {
+        scheduleUrl = lastLine.replace('AGENDAR:', '').trim();
+        reply = lines.slice(0, -1).join('\n').trim();
+      }
+
+      // Mensaje del asistente
+      addMessage('assistant', reply);
+      history.push({ role: 'assistant', content: reply });
+
+      // Botón de agendamiento si aplica
+      if (scheduleUrl) {
+        const actionBtn = document.createElement('button');
+        actionBtn.classList.add('chat-action-button');
+        actionBtn.type = 'button';
+        actionBtn.innerHTML = '📅 Abrir agenda';
+        actionBtn.addEventListener('click', () => {
+          window.open(scheduleUrl, '_blank');
+        });
+
+        const lastMsg = messagesContainer.lastElementChild;
+        if (lastMsg && lastMsg.classList.contains('assistant')) {
+          lastMsg.appendChild(document.createElement('br'));
+          lastMsg.appendChild(actionBtn);
+        }
+      }
+    } catch (err) {
+      console.error(err);
+      addSystemMessage('Hubo un problema al hablar con el asistente. Inténtalo de nuevo.');
+    } finally {
+      textarea.disabled = false;
+      sendBtn.disabled = false;
+      textarea.focus();
+    }
+  }
+
+  launcher.addEventListener('click', () => {
+    panel.classList.toggle('open');
+    // Ya no añadimos ningún mensaje. La primera respuesta vendrá del modelo
+    });
+
+  closeBtn.addEventListener('click', () => {
+    panel.classList.remove('open');
+  });
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    sendMessage(textarea.value);
+  });
+
+  textarea.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      form.requestSubmit();
+    }
+  });
+})();
+</script>
