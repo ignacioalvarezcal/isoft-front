@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import NavBar from "../../components/navbar/NavBar.astro";
+
+import { services, pillars, processSteps } from "../../data/isoft";
+
+export const prerender = true;
+---
+
+<BaseLayout>
+    <NavBar />
+
+    <main style="padding-top: 100px; min-height: 80vh;">
+        <section class="section">
+            <div class="section-inner">
+                <h1>Software a Medida</h1>
+                <p>Contenido en construcción...</p>
+            </div>
+        </section>
+    </main>
+
+    <SiteFooter />
+</BaseLayout>

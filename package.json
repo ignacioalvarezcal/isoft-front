@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@astrojs/vercel": "^9.0.2",
+    "@iconify-json/simple-icons": "^1.2.63",
     "astro": "^5.15.7",
+    "astro-icon": "^1.1.5",
     "lucide-astro": "^0.553.0",
     "openai": "^6.9.0"
   },

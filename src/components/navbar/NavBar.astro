@@ -1,0 +1,79 @@
+---
+import './navbar.scss';
+
+const links = [
+  { href: '#inicio', label: 'Inicio' },
+  { href: '#servicios', label: 'Servicios' },
+  { href: '#proyectos', label: 'Proyectos' },
+  { href: '#nosotros', label: 'Nosotros' },
+  { href: '#contacto', label: 'Contacto' },
+];
+---
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <!-- Logo -->
+    <a href="/" class="nav-logo">
+      <img src="/logo.png" alt="ISOFT" />
+    </a>
+
+    <!-- Botón hamburguesa (solo mobile) -->
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Links -->
+    <ul class="nav-links">
+      {links.map((link) => (
+        <li>
+          <a href={link.href}>{link.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+// @ts-nocheck
+  (function () {
+    const nav = document.querySelector('.navbar');
+    if (!nav) return;
+
+    const toggle = nav.querySelector('.nav-toggle');
+    const links = nav.querySelector('.nav-links');
+
+    if (!toggle || !links) return;
+
+    // Menú hamburguesa
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Cerrar menú al hacer click en un link
+    links.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Scroll effect
+    function updateScrollState() {
+      const shouldBeScrolled = window.scrollY > 20; // umbral suave
+      if (shouldBeScrolled) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+
+    // Estado inicial
+    updateScrollState();
+
+    // Actualizar en cada scroll
+    window.addEventListener('scroll', updateScrollState);
+  })();
+</script>

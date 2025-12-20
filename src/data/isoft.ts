@@ -6,6 +6,7 @@ export interface Service {
   icon: ServiceIcon;
   title: string;
   description: string;
+  slug: string;
 }
 
 export interface Pillar {
@@ -23,39 +24,45 @@ export interface ProcessStep {
 export const services: Service[] = [
   {
     icon: "cpu",
-    title: "Desarrollo de Software a Medida",
+    title: "Ecosistema de Software a Medida (Custom Apps)",
     description:
-      "Soluciones personalizadas y automatizaciones que transforman sus procesos empresariales con tecnología de vanguardia.",
+      "No te adaptes al software, hacemos que el software se adapte a tí. Diseñamos plataformas web y móviles para resolver cuellos de botella operativos de tu negocio.",
+    slug: "/services/software-development",
   },
   {
     icon: "zap",
-    title: "Integración de Sistemas",
+    title: "Sincronización total de sistemas (API Connect)",
     description:
-      "Conectamos sus plataformas empresariales para crear un ecosistema tecnológico unificado y eficiente.",
+      'Conectamos tus "islas de información". Hacemos que tus sistemas hablen entre sí automáticamente, eliminando la doble digitación y los errores de traspaso.',
+    slug: "#"
   },
   {
     icon: "brain",
-    title: "Soluciones de IA",
+    title: "Asistentes de negocio con IA (Smart Solutions)",
     description:
-      "Implementación de inteligencia artificial con profesionales especializados para optimizar decisiones estratégicas.",
+      "Implementación práctica de inteligencia artificial para tareas especificas: desde chatbots que realmente resuelven dudas y generan acciones hasta algoritmos que predicen tu inventario óptimo.",
+    slug: "#"
   },
   {
     icon: "shield",
-    title: "Auditorías Tecnológicas",
+    title: "Consultoría de estrategia TI (Tech Audit)",
     description:
-      "Evaluación exhaustiva de infraestructura y consultoría estratégica para maximizar su inversión tecnológica.",
+      "Evaluación profunda de tu salud tecnológica. No solo buscamos fallas, diseñamos una hoja de ruta para que cada peso invertido en tecnología genere rentabilidad.",
+    slug: "#"
   },
   {
     icon: "db",
-    title: "Flujos ETL Avanzados",
+    title: "Ingeniería de datos automatizada (Data Pipelines)",
     description:
-      "Procesamiento eficiente de grandes volúmenes de datos con pipelines robustos y escalables.",
+      "Creamos tuberías digitales que extraen, limpian y organizan grandes volúmenes de datos brutos, dejandolos listos para el analisis. Transformamos caos de información en bases de datos estructuradas.",
+    slug: "#"
   },
   {
     icon: "chart",
-    title: "Dashboards Interactivos",
+    title: "Inteligencia de negocios Pyme (BI Express)",
     description:
-      "Visualización inteligente de datos que convierte información compleja en insights accionables.",
+      "Implementación de tableros de control visual. Centralizamos ventas, finanzas u operaciones en una sola pantalla interactiva.",
+    slug: "#"
   },
 ];
 
