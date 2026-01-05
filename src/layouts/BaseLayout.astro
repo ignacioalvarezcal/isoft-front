@@ -1,5 +1,7 @@
 ---
 import "../styles/global.scss";
+import { ClientRouter } from "astro:transitions";
+import SpaceBackground from "../components/SpaceBackground.astro";
 interface Props {
   title?: string;
   description?: string;
@@ -17,45 +19,55 @@ const {
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <ClientRouter fallback="swap" />
   </head>
 
   <body class="page">
+    <SpaceBackground transition:persist />
     <slot />
 
-    <!-- JS para parallax + animaciones -->
-    <script>
-      // Parallax blobs
-      const parallaxEls = document.querySelectorAll("[data-parallax]");
+    <!-- JS para parallax + animaciones - optimizado para View Transitions -->
+    <script is:inline>
+      function initPageScripts() {
+        // Parallax blobs
+        const parallaxEls = document.querySelectorAll("[data-parallax]");
 
-      const handleScroll = () => {
-        const scrollY = window.scrollY || window.pageYOffset;
+        const handleScroll = () => {
+          const scrollY = window.scrollY || window.pageYOffset;
 
-        parallaxEls.forEach((el) => {
-          const htmlEl = el as HTMLElement;
-          const speed = Number(htmlEl.getAttribute("data-speed") || "0.3");
-          htmlEl.style.transform = `translateY(${scrollY * speed * 0.5}px)`;
-        });
-      };
-
-      window.addEventListener("scroll", handleScroll);
-      handleScroll();
-
-      // IntersectionObserver para .fade-in-up
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              (entry.target as HTMLElement).classList.add("visible");
-              observer.unobserve(entry.target);
-            }
+          parallaxEls.forEach((el) => {
+            const speed = Number(el.getAttribute("data-speed") || "0.3");
+            el.style.transform = `translateY(${scrollY * speed * 0.5}px)`;
           });
-        },
-        { threshold: 0.1, rootMargin: "50px" }
-      );
+        };
 
-      document
-        .querySelectorAll("[data-animate]")
-        .forEach((el) => observer.observe(el));
+        window.addEventListener("scroll", handleScroll);
+        handleScroll();
+
+        // IntersectionObserver para .fade-in-up
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "50px" },
+        );
+
+        document
+          .querySelectorAll("[data-animate]")
+          .forEach((el) => observer.observe(el));
+      }
+
+      // Run on initial load and after View Transitions navigation
+      initPageScripts();
+      document.addEventListener("astro:page-load", initPageScripts);
     </script>
   </body>
 </html>

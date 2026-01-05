@@ -1,0 +1,84 @@
+---
+import { MessageCircle, TrendingUp, Package, BarChart3 } from "lucide-astro";
+import "./SoftwareUseCases.scss";
+---
+
+<section class="usecases-section">
+  <div class="section-inner">
+    <div class="usecases-header">
+      <div class="usecases-label">Casos de Uso</div>
+      <h2 class="usecases-title">
+        Soluciones concretas para <span class="text-gradient">desafíos reales</span>
+      </h2>
+      <p class="usecases-subtitle">
+        Desde PyMEs hasta empresas medianas, nuestras soluciones se adaptan a tu industria
+      </p>
+    </div>
+
+    <div class="usecases-grid">
+      <!-- Use Case 1 -->
+      <div class="usecase-item" data-animate>
+        <div class="usecase-item__header">
+          <MessageCircle size={40} />
+          <h3>Chatbot de Atención al Cliente</h3>
+        </div>
+        <p class="usecase-item__description">
+          Sistema de atención inteligente que resuelve dudas frecuentes 24/7, registra consultas y escala a agentes humanos cuando es necesario.
+        </p>
+        <div class="usecase-item__benefits">
+          <span class="benefit-tag">Reducción 60% en llamadas</span>
+          <span class="benefit-tag">Disponibilidad 24/7</span>
+          <span class="benefit-tag">Datos estructurados</span>
+        </div>
+      </div>
+
+      <!-- Use Case 2 -->
+      <div class="usecase-item" data-animate>
+        <div class="usecase-item__header">
+          <TrendingUp size={40} />
+          <h3>Dashboard de Ventas En Tiempo Real</h3>
+        </div>
+        <p class="usecase-item__description">
+          Tablero ejecutivo que integra datos de múltiples fuentes: ventas, inventario, gastos. Visualización instantánea de KPIs y análisis predictivo.
+        </p>
+        <div class="usecase-item__benefits">
+          <span class="benefit-tag">Decisiones más rápidas</span>
+          <span class="benefit-tag">Automatización de reportes</span>
+          <span class="benefit-tag">Visibilidad total</span>
+        </div>
+      </div>
+
+      <!-- Use Case 3 -->
+      <div class="usecase-item" data-animate>
+        <div class="usecase-item__header">
+          <Package size={40} />
+          <h3>Automatización de Procesos RPA</h3>
+        </div>
+        <p class="usecase-item__description">
+          Bots que automatizan tareas repetitivas: procesar facturas, actualizar registros, sincronizar datos entre sistemas sin intervención manual.
+        </p>
+        <div class="usecase-item__benefits">
+          <span class="benefit-tag">Reducción 80% tareas manuales</span>
+          <span class="benefit-tag">Cero errores humanos</span>
+          <span class="benefit-tag">Escalable al instante</span>
+        </div>
+      </div>
+
+      <!-- Use Case 4 -->
+      <div class="usecase-item" data-animate>
+        <div class="usecase-item__header">
+          <BarChart3 size={40} />
+          <h3>Portal de Gestión Interna</h3>
+        </div>
+        <p class="usecase-item__description">
+          Aplicación web personalizada para gestión de recursos humanos, proyectos, inventario o créditos. Interfaz intuitiva y reportes automáticos.
+        </p>
+        <div class="usecase-item__benefits">
+          <span class="benefit-tag">Adopción rápida</span>
+          <span class="benefit-tag">Acceso desde cualquier lugar</span>
+          <span class="benefit-tag">Backup automático</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

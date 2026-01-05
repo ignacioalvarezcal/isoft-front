@@ -1,19 +1,19 @@
 ---
-import './navbar.scss';
+import "./navbar.scss";
 
 const links = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#servicios', label: 'Servicios' },
-  { href: '#proyectos', label: 'Proyectos' },
-  { href: '#nosotros', label: 'Nosotros' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: "#inicio", label: "Inicio" },
+  { href: "#servicios", label: "Servicios" },
+  { href: "#proyectos", label: "Proyectos" },
+  { href: "#nosotros", label: "Nosotros" },
+  { href: "#contacto", label: "Contacto" },
 ];
 ---
 
-<nav class="navbar">
+<nav class="navbar" transition:persist>
   <div class="nav-inner">
     <!-- Logo -->
-    <a href="/" class="nav-logo">
+    <a href="/" class="nav-logo" data-astro-prefetch>
       <img src="/logo.png" alt="ISOFT" />
     </a>
 
@@ -26,47 +26,49 @@ const links = [
 
     <!-- Links -->
     <ul class="nav-links">
-      {links.map((link) => (
-        <li>
-          <a href={link.href}>{link.label}</a>
-        </li>
-      ))}
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </nav>
 
-<script>
-// @ts-nocheck
-  (function () {
-    const nav = document.querySelector('.navbar');
-    if (!nav) return;
+<script is:inline>
+  function initNavbar() {
+    const nav = document.querySelector(".navbar");
+    if (!nav || nav.dataset.initialized) return;
+    nav.dataset.initialized = "true";
 
-    const toggle = nav.querySelector('.nav-toggle');
-    const links = nav.querySelector('.nav-links');
+    const toggle = nav.querySelector(".nav-toggle");
+    const links = nav.querySelector(".nav-links");
 
     if (!toggle || !links) return;
 
     // Menú hamburguesa
-    toggle.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    toggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
 
     // Cerrar menú al hacer click en un link
-    links.querySelectorAll('a').forEach((a) => {
-      a.addEventListener('click', () => {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
+    links.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
       });
     });
 
     // Scroll effect
     function updateScrollState() {
-      const shouldBeScrolled = window.scrollY > 20; // umbral suave
+      const shouldBeScrolled = window.scrollY > 20;
       if (shouldBeScrolled) {
-        nav.classList.add('scrolled');
+        nav.classList.add("scrolled");
       } else {
-        nav.classList.remove('scrolled');
+        nav.classList.remove("scrolled");
       }
     }
 
@@ -74,6 +76,9 @@ const links = [
     updateScrollState();
 
     // Actualizar en cada scroll
-    window.addEventListener('scroll', updateScrollState);
-  })();
+    window.addEventListener("scroll", updateScrollState);
+  }
+
+  initNavbar();
+  document.addEventListener("astro:page-load", initNavbar);
 </script>

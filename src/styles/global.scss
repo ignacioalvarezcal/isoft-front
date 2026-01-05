@@ -1,6 +1,6 @@
 /* src/styles/global.scss */
 
-/* Fuente global */
+/* Fuente global - optimizada con display=swap para carga no bloqueante */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 
 :root {
@@ -218,7 +218,9 @@ body {
    BOTÓN PRIMARIO — PREMIUM
    ============================ */
 
-.btn-primary {
+.btn-primary,
+.btn--primary,
+.btn {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -237,18 +239,24 @@ body {
   box-shadow: 0 0 22px rgba(0, 165, 255, 0.25);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn--primary:hover,
+.btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 0 35px rgba(0, 180, 255, 0.45);
 }
 
-.btn-primary svg {
+.btn-primary svg,
+.btn--primary svg,
+.btn svg {
   width: 1.1rem;
   height: 1.1rem;
   transition: transform 0.25s ease;
 }
 
-.btn-primary:hover svg {
+.btn-primary:hover svg,
+.btn--primary:hover svg,
+.btn:hover svg {
   transform: translateX(4px);
 }
 

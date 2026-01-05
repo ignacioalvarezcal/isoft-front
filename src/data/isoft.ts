@@ -5,6 +5,7 @@ export type ServiceIcon = "cpu" | "zap" | "brain" | "shield" | "db" | "chart";
 export interface Service {
   icon: ServiceIcon;
   title: string;
+  subtitle?: string;
   description: string;
   slug: string;
 }
@@ -24,42 +25,48 @@ export interface ProcessStep {
 export const services: Service[] = [
   {
     icon: "cpu",
-    title: "Ecosistema de Software a Medida (Custom Apps)",
+    title: "Software Inteligente a Medida",
+    subtitle: "Custom Apps",
     description:
       "No te adaptes al software, hacemos que el software se adapte a tí. Diseñamos plataformas web y móviles para resolver cuellos de botella operativos de tu negocio.",
     slug: "/services/software-development",
   },
   {
     icon: "zap",
-    title: "Sincronización total de sistemas (API Connect)",
+    title: "Sincronización de sistemas",
+    subtitle: "API Connect",
     description:
       'Conectamos tus "islas de información". Hacemos que tus sistemas hablen entre sí automáticamente, eliminando la doble digitación y los errores de traspaso.',
     slug: "#"
   },
   {
     icon: "brain",
-    title: "Asistentes de negocio con IA (Smart Solutions)",
+    title: "Asistentes de negocio con IA",
+    subtitle: "Smart Solutions",
     description:
-      "Implementación práctica de inteligencia artificial para tareas especificas: desde chatbots que realmente resuelven dudas y generan acciones hasta algoritmos que predicen tu inventario óptimo.",
+      "Implementación de Inteligencia Artificial para tareas especificas: desde chatbots que resuelven dudas y generan acciones hasta algoritmos que predicen tu inventario óptimo.",
     slug: "#"
   },
   {
     icon: "shield",
-    title: "Consultoría de estrategia TI (Tech Audit)",
+    title: "Consultoría de estrategia TI",
+    subtitle: "Tech Audit",
     description:
       "Evaluación profunda de tu salud tecnológica. No solo buscamos fallas, diseñamos una hoja de ruta para que cada peso invertido en tecnología genere rentabilidad.",
     slug: "#"
   },
   {
     icon: "db",
-    title: "Ingeniería de datos automatizada (Data Pipelines)",
+    title: "Ingeniería de datos en auto",
+    subtitle: "Data Pipelines",
     description:
-      "Creamos tuberías digitales que extraen, limpian y organizan grandes volúmenes de datos brutos, dejandolos listos para el analisis. Transformamos caos de información en bases de datos estructuradas.",
+      "Creamos tuberías digitales que extraen, limpian y organizan grandes volúmenes de datos brutos en bases de datos estructuradas, dejandolos listos para el analisis.",
     slug: "#"
   },
   {
     icon: "chart",
-    title: "Inteligencia de negocios Pyme (BI Express)",
+    title: "Inteligencia de negocios Pyme",
+    subtitle: "BI Express",
     description:
       "Implementación de tableros de control visual. Centralizamos ventas, finanzas u operaciones en una sola pantalla interactiva.",
     slug: "#"
@@ -67,7 +74,7 @@ export const services: Service[] = [
 ];
 
 export const pillars: Pillar[] = [
-  { number: "15+", label: "Años de Experiencia", desc: "Liderando transformación digital" },
+  { number: "5+", label: "Años de Experiencia", desc: "Liderando transformación digital" },
   { number: "200+", label: "Proyectos Exitosos", desc: "En empresas Fortune 1000" },
   { number: "98%", label: "Satisfacción Cliente", desc: "Relaciones a largo plazo" },
   { number: "24/7", label: "Soporte Técnico", desc: "Disponibilidad continua" },

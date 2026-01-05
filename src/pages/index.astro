@@ -6,14 +6,16 @@ import WhyIsoftSection from "../components/WhyIsoftSection.astro";
 import ProcessSection from "../components/ProcessSection.astro";
 import CTASection from "../components/CTASection.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import ChatWidget from '../components/ChatWidget.astro';
-import NavBar from '../components/navbar/NavBar.astro';
+import ChatWidget from "../components/ChatWidget.astro";
+import NavBar from "../components/navbar/NavBar.astro";
 
 import { services, pillars, processSteps } from "../data/isoft";
+
+export const prerender = true;
 ---
 
 <BaseLayout>
-	<NavBar />
+  <NavBar />
   <ChatWidget />
   <Hero />
   <ServicesSection services={services} />

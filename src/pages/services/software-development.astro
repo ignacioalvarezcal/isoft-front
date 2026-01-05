@@ -2,23 +2,28 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import NavBar from "../../components/navbar/NavBar.astro";
-
-import { services, pillars, processSteps } from "../../data/isoft";
+//import SoftwareDevelopmentHero from "../../components/SoftwareDevelopmentHero.astro";
+import SoftwareFeatures from "../../components/SoftwareFeatures.astro";
+import SoftwareUseCases from "../../components/SoftwareUseCases.astro";
+import SoftwareDevelopmentProcess from "../../components/SoftwareDevelopmentProcess.astro";
+import CTASection from "../../components/CTASection.astro";
 
 export const prerender = true;
 ---
 
-<BaseLayout>
-    <NavBar />
+<BaseLayout
+  title="Software a Medida | ISOFT - Desarrollo Personalizado"
+  description="Desarrollo de software personalizado, automatización con IA y scripts. Soluciones tecnológicas adaptadas a tu negocio."
+>
+  <NavBar />
 
-    <main style="padding-top: 100px; min-height: 80vh;">
-        <section class="section">
-            <div class="section-inner">
-                <h1>Software a Medida</h1>
-                <p>Contenido en construcción...</p>
-            </div>
-        </section>
-    </main>
+  <main>
+    <!-- <SoftwareDevelopmentHero /> -->
+    <SoftwareFeatures />
+    <SoftwareUseCases />
+    <SoftwareDevelopmentProcess />
+    <CTASection />
+  </main>
 
-    <SiteFooter />
+  <SiteFooter />
 </BaseLayout>

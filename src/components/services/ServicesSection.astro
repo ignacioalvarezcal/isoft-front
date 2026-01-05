@@ -44,18 +44,38 @@ const getServiceIcon = (type: Service["icon"]) => {
         services.map((service, index) => {
           const Icon = getServiceIcon(service.icon);
           return (
-            <a href={service.slug} class="service-card-link">
+            /* MODIFICADO: Agregamos h-full y block al enlace para que llene la celda */
+            <a
+              href={service.slug}
+              class="service-card-link block h-full"
+              data-astro-prefetch
+            >
               <article
                 id={`service-${index}`}
                 data-animate
-                class="service-card fade-in-up"
+                class="service-card fade-in-up flex flex-col h-full"
                 style={`transition-delay: ${index * 100}ms`}
               >
-                <div class="services-card-icon-wrapper">
+                <div class="services-card-icon-wrapper mb-4">
                   <Icon />
                 </div>
+
                 <h3 class="services-card-title">{service.title}</h3>
-                <p class="services-card-text">{service.description}</p>
+
+                {/* NUEVO: Subtítulo. Usamos service.subtitle (asegúrate de tenerlo en tu data) */}
+                {/* Ajusta las clases de color (text-cyan-400) según tu paleta */}
+                {service.subtitle && (
+                  <span class="text-sm font-semibold text-cyan-400 mb-3 block uppercase tracking-wider">
+                    {service.subtitle}
+                  </span>
+                )}
+
+                {/* MODIFICADO: flex-grow hace que el texto o el espacio inferior se expanda 
+                    para que todas las tarjetas terminen en la misma línea visualmente si quisieras 
+                    alinear un botón al final, pero aquí ayuda a la estructura */}
+                <p class="services-card-text flex-grow">
+                  {service.description}
+                </p>
               </article>
             </a>
           );

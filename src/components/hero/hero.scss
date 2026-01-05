@@ -4,57 +4,19 @@
 
 .hero {
     min-height: 100vh;
-    padding: 0 1.5rem 4rem;
+    padding: 0 1.5rem 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-
-    &__bg {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
-        background: radial-gradient(circle at top, #020617, #020617 55%, #020617 100%);
-    }
-
-    &__blob {
-        position: absolute;
-        width: 26rem;
-        height: 26rem;
-        border-radius: 9999px;
-        filter: blur(52px);
-        opacity: 0.9;
-        animation: float-y 8s ease-in-out infinite;
-        will-change: transform;
-    }
-
-    &__blob--left {
-        top: 20%;
-        left: -28%;
-        background: radial-gradient(circle at center, rgba(56, 189, 248, 0.4), transparent 65%);
-    }
-
-    &__blob--right {
-        bottom: 16%;
-        right: -26%;
-        background: radial-gradient(circle at center, rgba(37, 99, 235, 0.45), transparent 65%);
-        animation-delay: 2s;
-    }
-
-    &__overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom,
-                rgba(15, 23, 42, 0.2),
-                rgba(15, 23, 42, 0.9),
-                #020617 100%);
-    }
+    position: relative;
 
     &__content {
         position: relative;
         z-index: 10;
         max-width: 960px;
         text-align: center;
+        margin-top: -4rem;
     }
 
     &__pill {

@@ -1,0 +1,122 @@
+---
+import { Check, Cpu, Brain, Zap, Database, Lock, BarChart3 } from "lucide-astro";
+import "./SoftwareFeatures.scss";
+
+interface Props {
+  id?: string;
+}
+
+const { id = "benefits" } = Astro.props;
+---
+
+<section class="features-section" {id}>
+  <div class="section-inner">
+    <div class="features-header">
+      <div class="features-label">Ventajas Competitivas</div>
+      <h2 class="features-title">
+        ¿Por qué elegir <span class="text-gradient">ISOFT</span> para tu software?
+      </h2>
+      <p class="features-subtitle">
+        Combinamos experiencia, tecnología de vanguardia y metodología ágil para entregar soluciones que generan ROI
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card" data-animate>
+        <div class="feature-card__icon">
+          <Cpu size={32} />
+        </div>
+        <h3 class="feature-card__title">Tecnología Moderna</h3>
+        <p class="feature-card__description">
+          Utilizamos stacks tecnológicos actuales y escalables: React, Node.js, Python, TypeScript y arquitecturas cloud-native.
+        </p>
+        <ul class="feature-card__list">
+          <li><Check size={16} /> APIs REST y GraphQL</li>
+          <li><Check size={16} /> Microservicios y contenedores</li>
+          <li><Check size={16} /> Infraestructura como código</li>
+        </ul>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-card" data-animate>
+        <div class="feature-card__icon">
+          <Brain size={32} />
+        </div>
+        <h3 class="feature-card__title">IA y Automatización</h3>
+        <p class="feature-card__description">
+          Implementamos soluciones con inteligencia artificial para optimizar procesos, reducir costos operacionales y mejorar la experiencia del usuario.
+        </p>
+        <ul class="feature-card__list">
+          <li><Check size={16} /> Chatbots inteligentes</li>
+          <li><Check size={16} /> Análisis predictivo</li>
+          <li><Check size={16} /> Automatización de flujos</li>
+        </ul>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-card" data-animate>
+        <div class="feature-card__icon">
+          <Zap size={32} />
+        </div>
+        <h3 class="feature-card__title">Entrega Rápida</h3>
+        <p class="feature-card__description">
+          Metodología ágil y sprint planning que asegura entregas tempranas y feedback constante con tu equipo.
+        </p>
+        <ul class="feature-card__list">
+          <li><Check size={16} /> Sprints de 2 semanas</li>
+          <li><Check size={16} /> Demos regulares</li>
+          <li><Check size={16} /> Adaptación continua</li>
+        </ul>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-card" data-animate>
+        <div class="feature-card__icon">
+          <Database size={32} />
+        </div>
+        <h3 class="feature-card__title">Datos Inteligentes</h3>
+        <p class="feature-card__description">
+          Diseño de pipelines de datos y tableros analíticos que convierten información cruda en decisiones estratégicas.
+        </p>
+        <ul class="feature-card__list">
+          <li><Check size={16} /> ETL automatizado</li>
+          <li><Check size={16} /> Dashboards interactivos</li>
+          <li><Check size={16} /> Business Intelligence</li>
+        </ul>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="feature-card" data-animate>
+        <div class="feature-card__icon">
+          <Lock size={32} />
+        </div>
+        <h3 class="feature-card__title">Seguridad y Confiabilidad</h3>
+        <p class="feature-card__description">
+          Implementamos estándares de seguridad industria, encriptación, auditoría y compliance normativo en cada solución.
+        </p>
+        <ul class="feature-card__list">
+          <li><Check size={16} /> Encriptación end-to-end</li>
+          <li><Check size={16} /> Testing de seguridad</li>
+          <li><Check size={16} /> Backup y disaster recovery</li>
+        </ul>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="feature-card" data-animate>
+        <div class="feature-card__icon">
+          <BarChart3 size={32} />
+        </div>
+        <h3 class="feature-card__title">Soporte a Largo Plazo</h3>
+        <p class="feature-card__description">
+          No es un proyecto aislado, es una asociación. Ofrecemos mantenimiento, actualizaciones y evolución continua.
+        </p>
+        <ul class="feature-card__list">
+          <li><Check size={16} /> SLA 99.9% uptime</li>
+          <li><Check size={16} /> Soporte técnico 24/7</li>
+          <li><Check size={16} /> Mejoras periódicas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

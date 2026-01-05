@@ -1,11 +1,15 @@
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  output: 'server',
+  output: 'static',
   adapter: vercel(),
   integrations: [icon()],
+  prefetch: {
+    prefetchAll: false,
+    defaultStrategy: 'hover',
+  },
   vite: {
     server: {
       hmr: {

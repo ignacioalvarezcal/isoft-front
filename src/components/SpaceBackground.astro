@@ -1,0 +1,411 @@
+---
+// SpaceBackground.astro - Animated space background with twinkling stars, nebulae, and auroras
+---
+
+<div class="space-background">
+    <!-- Nebula layers -->
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
+    <div class="nebula nebula-4"></div>
+    <div class="nebula nebula-5"></div>
+
+    <!-- Aurora layers -->
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <div class="aurora aurora-4"></div>
+    <div class="aurora aurora-5"></div>
+
+    <!-- Stars container -->
+    <div class="stars-layer stars-layer-1"></div>
+    <div class="stars-layer stars-layer-2"></div>
+    <div class="stars-layer stars-layer-3"></div>
+</div>
+
+<style>
+    .space-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+        background: radial-gradient(ellipse at top, #1b2735 0%, #090a0f 100%);
+    }
+
+    /* ===== NEBULAE ===== */
+    .nebula {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.3;
+        animation: nebula-pulse 15s ease-in-out infinite;
+    }
+
+    .nebula-1 {
+        top: 0%;
+        left: 15%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+            circle,
+            rgba(147, 51, 234, 0.4) 0%,
+            transparent 70%
+        );
+        animation-delay: 0s;
+    }
+
+    .nebula-2 {
+        top: 50%;
+        right: 10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+            circle,
+            rgba(59, 130, 246, 0.3) 0%,
+            transparent 70%
+        );
+        animation-delay: 5s;
+    }
+
+    .nebula-3 {
+        bottom: 15%;
+        left: 50%;
+        width: 550px;
+        height: 550px;
+        background: radial-gradient(
+            circle,
+            rgba(6, 182, 212, 0.35) 0%,
+            transparent 70%
+        );
+        animation-delay: 10s;
+    }
+
+    .nebula-4 {
+        top: 40%;
+        right: 5%;
+        width: 450px;
+        height: 450px;
+        background: radial-gradient(
+            circle,
+            rgba(236, 72, 153, 0.25) 0%,
+            transparent 70%
+        );
+        animation-delay: 3s;
+    }
+
+    .nebula-5 {
+        top: 65%;
+        left: 10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+            circle,
+            rgba(20, 184, 166, 0.3) 0%,
+            transparent 70%
+        );
+        animation-delay: 7s;
+    }
+
+    @keyframes nebula-pulse {
+        0%,
+        100% {
+            transform: scale(1) translateY(0);
+            opacity: 0.3;
+        }
+        50% {
+            transform: scale(1.1) translateY(-20px);
+            opacity: 0.4;
+        }
+    }
+
+    /* ===== AURORAS ===== */
+    .aurora {
+        position: absolute;
+        width: 100%;
+        height: 300px;
+        filter: blur(60px);
+        opacity: 0.15;
+        animation: aurora-wave 20s ease-in-out infinite;
+    }
+
+    .aurora-1 {
+        top: 5%;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(34, 211, 238, 0.3) 25%,
+            rgba(147, 51, 234, 0.3) 50%,
+            rgba(59, 130, 246, 0.3) 75%,
+            transparent 100%
+        );
+        animation-delay: 0s;
+    }
+
+    .aurora-2 {
+        top: 60%;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(96, 165, 250, 0.25) 30%,
+            rgba(34, 211, 238, 0.25) 60%,
+            transparent 100%
+        );
+        animation-delay: 7s;
+    }
+
+    .aurora-3 {
+        top: 20%;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(168, 85, 247, 0.2) 20%,
+            rgba(217, 70, 239, 0.25) 50%,
+            rgba(192, 132, 252, 0.2) 80%,
+            transparent 100%
+        );
+        animation-delay: 4s;
+    }
+
+    .aurora-4 {
+        top: 45%;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(34, 197, 94, 0.18) 25%,
+            rgba(74, 222, 128, 0.22) 50%,
+            rgba(16, 185, 129, 0.18) 75%,
+            transparent 100%
+        );
+        animation-delay: 10s;
+    }
+
+    .aurora-5 {
+        top: 75%;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(139, 92, 246, 0.2) 30%,
+            rgba(168, 85, 247, 0.24) 60%,
+            transparent 100%
+        );
+        animation-delay: 14s;
+    }
+
+    @keyframes aurora-wave {
+        0%,
+        100% {
+            transform: translateX(-10%) skewY(2deg);
+            opacity: 0.15;
+        }
+        50% {
+            transform: translateX(10%) skewY(-2deg);
+            opacity: 0.25;
+        }
+    }
+
+    /* ===== STARS ===== */
+    .stars-layer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image:
+            radial-gradient(2px 2px at 20px 30px, white, transparent),
+            radial-gradient(2px 2px at 60px 70px, white, transparent),
+            radial-gradient(1px 1px at 50px 50px, white, transparent),
+            radial-gradient(1px 1px at 130px 80px, white, transparent),
+            radial-gradient(2px 2px at 90px 10px, white, transparent),
+            radial-gradient(1px 1px at 10px 100px, white, transparent),
+            radial-gradient(2px 2px at 150px 150px, white, transparent),
+            radial-gradient(1px 1px at 200px 50px, white, transparent),
+            radial-gradient(1px 1px at 180px 180px, white, transparent),
+            radial-gradient(2px 2px at 240px 100px, white, transparent),
+            radial-gradient(1px 1px at 300px 200px, white, transparent),
+            radial-gradient(2px 2px at 280px 50px, white, transparent),
+            radial-gradient(1px 1px at 350px 150px, white, transparent),
+            radial-gradient(1px 1px at 100px 250px, white, transparent),
+            radial-gradient(2px 2px at 420px 80px, white, transparent),
+            radial-gradient(1px 1px at 380px 280px, white, transparent),
+            radial-gradient(2px 2px at 500px 150px, white, transparent),
+            radial-gradient(1px 1px at 450px 50px, white, transparent),
+            radial-gradient(1px 1px at 550px 220px, white, transparent),
+            radial-gradient(2px 2px at 600px 100px, white, transparent);
+        background-repeat: repeat;
+        background-size: 650px 300px;
+    }
+
+    .stars-layer-1 {
+        animation: twinkle-1 5s ease-in-out infinite;
+        animation-delay: 0s;
+    }
+
+    .stars-layer-2 {
+        animation: twinkle-2 7s ease-in-out infinite;
+        animation-delay: 2s;
+        background-size: 800px 400px;
+    }
+
+    .stars-layer-3 {
+        animation: twinkle-3 9s ease-in-out infinite;
+        animation-delay: 4s;
+        background-size: 900px 500px;
+    }
+
+    /* Multiple twinkle animations for variation */
+    @keyframes twinkle-1 {
+        0% {
+            opacity: 0.5;
+            filter: brightness(1);
+        }
+        15% {
+            opacity: 0.3;
+            filter: brightness(0.8);
+        }
+        30% {
+            opacity: 0.9;
+            filter: brightness(1.3);
+        }
+        45% {
+            opacity: 0.4;
+            filter: brightness(0.9);
+        }
+        60% {
+            opacity: 1;
+            filter: brightness(1.5);
+        }
+        75% {
+            opacity: 0.6;
+            filter: brightness(1.1);
+        }
+        100% {
+            opacity: 0.5;
+            filter: brightness(1);
+        }
+    }
+
+    @keyframes twinkle-2 {
+        0% {
+            opacity: 0.4;
+            filter: brightness(0.9);
+        }
+        20% {
+            opacity: 0.8;
+            filter: brightness(1.4);
+        }
+        40% {
+            opacity: 0.3;
+            filter: brightness(0.7);
+        }
+        60% {
+            opacity: 0.95;
+            filter: brightness(1.6);
+        }
+        80% {
+            opacity: 0.5;
+            filter: brightness(1);
+        }
+        100% {
+            opacity: 0.4;
+            filter: brightness(0.9);
+        }
+    }
+
+    @keyframes twinkle-3 {
+        0% {
+            opacity: 0.3;
+            filter: brightness(0.8);
+        }
+        25% {
+            opacity: 0.7;
+            filter: brightness(1.2);
+        }
+        50% {
+            opacity: 0.35;
+            filter: brightness(0.85);
+        }
+        75% {
+            opacity: 0.85;
+            filter: brightness(1.4);
+        }
+        100% {
+            opacity: 0.3;
+            filter: brightness(0.8);
+        }
+    }
+
+    /* Star clusters (cumulos) - dense areas */
+    .stars-layer-1::after {
+        content: "";
+        position: absolute;
+        top: 20%;
+        right: 30%;
+        width: 200px;
+        height: 200px;
+        background-image:
+            radial-gradient(
+                1px 1px at 10px 10px,
+                rgba(255, 255, 255, 0.8),
+                transparent
+            ),
+            radial-gradient(
+                1px 1px at 30px 20px,
+                rgba(255, 255, 255, 0.9),
+                transparent
+            ),
+            radial-gradient(
+                1px 1px at 50px 30px,
+                rgba(255, 255, 255, 0.7),
+                transparent
+            ),
+            radial-gradient(
+                1px 1px at 70px 15px,
+                rgba(255, 255, 255, 0.8),
+                transparent
+            ),
+            radial-gradient(
+                1px 1px at 90px 40px,
+                rgba(255, 255, 255, 0.6),
+                transparent
+            ),
+            radial-gradient(
+                1px 1px at 110px 25px,
+                rgba(255, 255, 255, 0.9),
+                transparent
+            ),
+            radial-gradient(
+                1px 1px at 130px 50px,
+                rgba(255, 255, 255, 0.7),
+                transparent
+            ),
+            radial-gradient(
+                1px 1px at 150px 35px,
+                rgba(255, 255, 255, 0.8),
+                transparent
+            ),
+            radial-gradient(
+                1px 1px at 170px 45px,
+                rgba(255, 255, 255, 0.6),
+                transparent
+            ),
+            radial-gradient(
+                1px 1px at 190px 20px,
+                rgba(255, 255, 255, 0.9),
+                transparent
+            );
+        background-repeat: no-repeat;
+        opacity: 0.8;
+        animation: cluster-glow 5s ease-in-out infinite;
+    }
+
+    @keyframes cluster-glow {
+        0%,
+        100% {
+            opacity: 0.6;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+</style>

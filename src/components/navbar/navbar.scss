@@ -14,8 +14,8 @@
 /* ESTADO CON SCROLL o MENÚ ABIERTO */
 .navbar.scrolled,
 .navbar.open {
-    background: transparent !important;
-    backdrop-filter: blur(10px) saturate(180%) !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(12px) !important;
     box-shadow: none !important;
 }
 
