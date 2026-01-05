@@ -3,7 +3,7 @@ import vercel from '@astrojs/vercel';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  output: 'static',
+  output: 'server',
   adapter: vercel(),
   integrations: [icon()],
   prefetch: {
